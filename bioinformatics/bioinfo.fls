@@ -1,4 +1,4 @@
-PWD /home/leonard/Documents/Uni/PhD/Teaching/teaching_material
+PWD /home/leonard/Documents/Uni/PhD/Teaching/teaching_material/bioinformatics
 INPUT /var/lib/texmf/web2c/luatex/lualatex.fmt
 INPUT ./bioinfo.tex
 OUTPUT bioinfo.log
@@ -96,8 +96,8 @@ INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmex10.tfm
 INPUT /home/leonard/.texlive/texmf-var/luatex-cache/generic/fonts/otl/lmroman12-bold.luc
 INPUT /home/leonard/.texlive/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-italic.luc
-INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
 INPUT /home/leonard/.texlive/texmf-var/luatex-cache/generic/fonts/otl/lmroman9-regular.luc
+INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmr9.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmr5.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmmi9.tfm
@@ -110,4 +110,6 @@ INPUT /home/leonard/.texlive/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmr10.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmmi10.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
+INPUT /home/leonard/.texlive/texmf-var/luatex-cache/generic/fonts/otl/lmmono10-regular.luc
 INPUT ./bioinfo.aux
+INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb

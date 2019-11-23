@@ -1,3 +1,4 @@
+// source: https://issues.jalview.org/browse/JAL-547
 boolean selview=false // use current selection or whole alignment
 
 boolean includeids=true // false to report in strict PHYLIP where no OTUs are given

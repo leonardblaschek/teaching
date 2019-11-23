@@ -1,5 +1,6 @@
 # Fdb version 3
-["lualatex"] 1574507112 "bioinfo.tex" "bioinfo.pdf" "bioinfo" 1574507170
+["lualatex"] 1574522440 "bioinfo.tex" "bioinfo.pdf" "bioinfo" 1574522441
+  "/home/leonard/.texlive/texmf-var/luatex-cache/generic/fonts/otl/lmmono10-regular.luc" 1574517773 77653 86040e3154b6f32012afb10cd04f8016 ""
   "/home/leonard/.texlive/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-bold.luc" 1573932569 124218 8f419c5ea55679a7b7b27d0c866e6928 ""
   "/home/leonard/.texlive/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-italic.luc" 1573932570 132144 4a14d6624b6c49efd6e0df877a9177ca ""
   "/home/leonard/.texlive/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-regular.luc" 1573932569 123147 dadd5adc93992c73ab54e60db83aabef ""
@@ -9,6 +10,7 @@
   "/home/leonard/.texlive/texmf-var/luatex-cache/generic/fonts/otl/lmroman9-italic.luc" 1574460868 131670 7b1150bd0c6adda16cd8433753b30d70 ""
   "/home/leonard/.texlive/texmf-var/luatex-cache/generic/fonts/otl/lmroman9-regular.luc" 1574460868 123776 83095810c88849f3a552ad87c82b6924 ""
   "/home/leonard/.texlive/texmf-var/luatex-cache/generic/fonts/otl/lmromancaps10-regular.luc" 1574456918 116083 a3779b51d953a1e45ec815fb9d6df2b1 ""
+  "/usr/share/texmf-dist/fonts/opentype/public/lm/lmmono10-regular.otf" 1572595918 64684 15a2082c8e31f411875a86ea2d29a0ee ""
   "/usr/share/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.otf" 1572595918 111240 0af0b64d6d3df41bead3f9de314afbd4 ""
   "/usr/share/texmf-dist/fonts/opentype/public/lm/lmroman10-italic.otf" 1572595918 118828 4d461c73423fe2666dad2ff0dfc3ca68 ""
   "/usr/share/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.otf" 1572595918 111536 ae9d1b331000d544f47e5223081b7b54 ""
@@ -36,6 +38,7 @@
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm" 1572595918 1116 933a60c408fc0a863a92debe84b2d294 ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm" 1572595918 1120 8b7d695260f3cff42e636090a8002094 ""
   "/usr/share/texmf-dist/fonts/tfm/public/cm/cmsy9.tfm" 1572595918 1116 25a7bf822c58caf309a702ef79f4afbb ""
+  "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1572595918 32569 5e5ddc8df908dea60932f3c484a54c0d ""
   "/usr/share/texmf-dist/scripts/oberdiek/oberdiek.luatex.lua" 1572595918 1936 2cc8c19d0da45146d826b1c0e90be331 ""
   "/usr/share/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1572595918 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/share/texmf-dist/tex/generic/ifxetex/ifxetex.sty" 1572595918 1458 43ab4710dc82f3edeabecd0d099626b2 ""
@@ -75,11 +78,11 @@
   "/usr/share/texmf-dist/tex/luatex/lualibs/lualibs-extended.lua" 1572595918 4894 788132acfaf05394117da617b5a863fa ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1573909918 4569562 1260569e6693d3dc73846fd64ebfa574 ""
   "/var/lib/texmf/web2c/luatex/lualatex.fmt" 1573909909 1400561 7d50d2d6d9a17d407131c5f85ae81366 ""
-  "bioinfo.aux" 1574507112 1744 0d65e6f6db6f12b3267bf22dd8d51efc "lualatex"
-  "bioinfo.out" 1574507112 807 beab23b260151c85681323e6d2908203 "lualatex"
-  "bioinfo.tex" 1574507111 5982 b32425653d78ac22530d3c9976a18cd9 ""
+  "bioinfo.aux" 1574522441 1748 541bac07d50e87c7a0d6627ed9f3c19b "lualatex"
+  "bioinfo.out" 1574522441 814 32396e4c210d934a7ed3e7990606080e "lualatex"
+  "bioinfo.tex" 1574522440 8658 50126e39e0a06480da685dd2b6e302ad ""
   (generated)
-  "bioinfo.out"
   "bioinfo.log"
-  "bioinfo.aux"
   "bioinfo.pdf"
+  "bioinfo.out"
+  "bioinfo.aux"

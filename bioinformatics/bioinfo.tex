@@ -1,7 +1,7 @@
 \documentclass[11pt]{article}
  
 \usepackage[a4paper, 
- 	width = 125mm,
+ 	width = 120mm,
  	height = 220mm]{geometry}
 
 \usepackage{color}
@@ -37,7 +37,7 @@
  	The new, redundant gene can either remain as it is and function as a backup against metabolic disruptions, or evolve to fulfil a subset of the original gene's functions --  a process called \textit{subfunctionalisation}.
  	It can even develop a completely new function, undergoing \textit{neofunctionalisation}.
  	These new gene copies -- called paralogs -- allow the plant to adapt to new environments, outcompete rivals or defend against new enemies.
- 	Because they share an origin paralogs are \textit{homologous} (as opposed to genes that serve similar functions as a result of convergent evolution, which are \textit{analogous}).
+ 	Because they share a common origin, paralogs are \textit{homologous} (as opposed to genes that serve similar functions as a result of convergent evolution, which are \href{https://evolution.berkeley.edu/evolibrary/article/evo_09}{\textit{analogous}}\marginpar{\footnotesize\textcolor{SU}{Blue text} can be clicked and links to sections or web resources.}).
  	To increase the variability of functions within a gene family even further, the expression of the same paralog can result in different transcripts through a mechanism called \textit{alternative splicing}.
  	Consequentially, studying gene families and their variable functions is fundamental to our understanding of both plant physiology and adaptive evolution.
  	
@@ -46,7 +46,7 @@
  	In this workshop, you will:
  	\begin{enumerate}
  		\item \hyperref[sec:find]{Identify} all paralogs of a gene family in \textit{Arabidopsis thaliana} and its \textit{orthologs} in other species
- 		\item Create a \hyperref[sec:phylo]{phylogenetic tree} of paralogs and orthologs to visualise their similarity
+ 		\item \hyperref[sec:phylo]{Analyse sequence similarity} between the paralogs and orthologs and visualise it by drawing a phylogenetic tree
  		\item Map the \hyperref[sec:str]{gene structure} of the \textit{A. thaliana} paralogs
  		\item Design paralog specific \hyperref[sec:qpcr]{RT-qPCR primers}
  		\item Design primers to identify a \hyperref[sec:mut]{T-DNA insertion} and a single nucleotide polymorphism in one of the paralogs
@@ -73,7 +73,7 @@
  		\bottomrule
  	\end{tabular}
   	\end{table}
- 
+    \marginpar{\footnotesize Jalview is also available through \href{https://anaconda.org/bioconda/jalview}{bioconda}, if you are into that sorta thing.}
  
 	\section{Identifying paralogs\label{sec:find}}
 	
@@ -83,24 +83,39 @@
 	A simplified way of defining a gene family is as the group of sequences sharing the highest degree of similarity within the genome of a given species.
 	
 	\paragraph*{What sequence to use?} 
-	What type of sequence should you use? Think about what characterises nucleotide and protein sequences, and which one would be better suited to reliably identify homologous sequences. Theoretically, would the time that has passed since the duplication events play a role?Hint
+	What type of sequence should you use? Think about what characterises nucleotide and protein sequences, and which one would be better suited to reliably identify homologous sequences. Theoretically, would the time that has passed since the duplication events play a role?
 	
 	\paragraph*{Paralogs, duplicate entries \& splice variants.} 
 	Depending on your gene family and the sequence type, your \textsc{blast} results will probably include all three of those. 
 	Genes are unambiguously identified by their genomic position, or \href{https://www.arabidopsis.org/portals/nomenclature/guidelines.jsp#locus}{\textit{locus}}.
-	Multiple \textsc{blast} results that have the same locus are just duplicate sequence submissions of the same gene. Protein or mRNA sequences whose loci only vary in the trailing decimal (\textit{e.g.} AT1G27920.1 and AT1G27920.2), are splice variants of the same gene.
+	Multiple \textsc{blast} results that have the same locus are just duplicate sequence submissions of the same gene. Protein or mRNA sequences whose loci only vary in the trailing decimal (\textit{e.g.} AT1G27920.1 and AT1G27920.2) are splice variants of the same gene.
 	
 	\vspace*{\baselineskip}
 	
 		\noindent\begin{tabular}{@{}ll}
-		\textbf{Software:}	& SnapGene Viewer \\ 
-		&\\
-		\textbf{Web tools:}	& \href{https://blast.ncbi.nlm.nih.gov/Blast.cgi}{NCBI \textsc{blast}} \\ 
+		\textbf{Suggested tools:}	& \href{https://blast.ncbi.nlm.nih.gov/Blast.cgi}{NCBI \textsc{blast}} \\ 
 		&  \href{https://www.arabidopsis.org/Blast/}{TAIR \textsc{blast}} \\ 
 		&  \href{https://phytozome.jgi.doe.gov/pz/portal.html#!search?show=BLAST}{Phytozome \textsc{blast}}\\ 
 		\end{tabular} 
 	
-	\section{Drawing a phylogenetic tree\label{sec:phylo}}
+	\section{Analysing sequence similarity\label{sec:phylo}}
+	
+	\paragraph*{Alignments and scores.} Once you have identified your genes of interest, you can quantify and compare their degree of sequence similarity.
+	In order to do so, the first step is to calculate a multiple alignment (Jalview: \texttt{Web Service $\rightarrow$ Alignment}).
+	To compare the sequence similarity between two paralogs or orthologs numerically, the most easily interpretable measure is percent similarity. 
+	Put simply, if two sequences share the same amino acid at a given position, the similarity for that position is 100\%. 
+	When the amino acids differ, the similarity is scored according to the chemical differences (charge, hydrophobicity, \textit{etc.}) between the two amino acids based on the used substitution matrix (BLOSUM62, PAM250, \textit{etc.}). 
+	The overall percent similarity of two sequences is then simply the average similarity score of all positions. 
+	A short macro to obtain a percent similarity matrix of all your sequences in Jalview you can copy from \href{https://github.com/leonardblaschek/teaching/blob/master/bioinformatics/jalview_simmat.txt}{here}. 
+	After computing your alignment, simply open the console (\texttt{Tools $\rightarrow$ Groovy Console...}), paste the script into the box and execute it.
+	
+	\paragraph*{Pylogenetic trees.}To get a good overview of the similarities between all your sequences at once, we draw phylogenetic trees. The distance matrices underlying phylogenetic trees are, put simply, more sophisticated versions of the percent similarity matrix above. In order to \textit{root} the phylogeny, ou will need to include an \textit{outgroup}. An outgroup is any sequence that is closely related to your paralogs, but not as closely as the paralogs to each other. To choose an outgroup sequence you can simply select a sequence from further down the list in your blast results with a higher E-value than your paralogs. Only when a tree is rooted can you make inferences about the \href{https://evolution.berkeley.edu/evolibrary/article/evo_05}{\textit{direction}} of the tree, \textit{i.e.} which sequences are ancestral and which are more recently diverged. To create a phylogenetic tree in Jalview, select \texttt{Calculate $\rightarrow$ Calculate Tree or PCA...}.
+	
+	\vspace*{\baselineskip}
+	
+	\noindent\begin{tabular}{@{}ll}
+		\textbf{Suggested tools:}	& Jalview \\
+	\end{tabular} 
 	
 	\section{Mapping gene structure\label{sec:str}}
 	
