@@ -1,0 +1,112 @@
+\documentclass[11pt]{article}
+ 
+\usepackage[a4paper, 
+ 	width = 125mm,
+ 	height = 220mm]{geometry}
+
+\usepackage{color}
+\definecolor{SU}{RGB}{0, 46, 95}
+
+\usepackage{booktabs}
+
+\usepackage{microtype}
+ 	
+\usepackage{hyperref}
+\hypersetup{
+ 	colorlinks,
+ 	citecolor = black,
+ 	filecolor = black,
+ 	linkcolor = SU,
+ 	urlcolor = SU,
+ 	pdfauthor = {Leonard Blaschek},
+ 	pdftitle = {Bio-informatics guide},
+ 	pdfkeywords = {Lignin methods}
+}
+ 
+\title{A quick guide through bio-informatics for molecular genetics}
+ 
+\author{Leonard Blaschek, William Gardi}
+ 
+\begin{document}
+ 	\maketitle
+ 	
+ 	\section*{Introduction}
+ 	
+ 	Gene and genome duplication is a crucial cornerstone of plants' ability to adapt and evolve.
+ 	In duplicating genes and forming multi-genic families, the plant creates redundancy in the machinery necessary to maintain its physiological functions. 
+ 	The new, redundant gene can either remain as it is and function as a backup against metabolic disruptions, or evolve to fulfil a subset of the original gene's functions --  a process called \textit{subfunctionalisation}.
+ 	It can even develop a completely new function, undergoing \textit{neofunctionalisation}.
+ 	These new gene copies -- called paralogs -- allow the plant to adapt to new environments, outcompete rivals or defend against new enemies.
+ 	Because they share an origin paralogs are \textit{homologous} (as opposed to genes that serve similar functions as a result of convergent evolution, which are \textit{analogous}).
+ 	To increase the variability of functions within a gene family even further, the expression of the same paralog can result in different transcripts through a mechanism called \textit{alternative splicing}.
+ 	Consequentially, studying gene families and their variable functions is fundamental to our understanding of both plant physiology and adaptive evolution.
+ 	
+ 	\vspace*{1em}
+ 	
+ 	In this workshop, you will:
+ 	\begin{enumerate}
+ 		\item \hyperref[sec:find]{Identify} all paralogs of a gene family in \textit{Arabidopsis thaliana} and its \textit{orthologs} in other species
+ 		\item Create a \hyperref[sec:phylo]{phylogenetic tree} of paralogs and orthologs to visualise their similarity
+ 		\item Map the \hyperref[sec:str]{gene structure} of the \textit{A. thaliana} paralogs
+ 		\item Design paralog specific \hyperref[sec:qpcr]{RT-qPCR primers}
+ 		\item Design primers to identify a \hyperref[sec:mut]{T-DNA insertion} and a single nucleotide polymorphism in one of the paralogs
+ 	\end{enumerate}
+ 
+ 	\section*{Software and web tools}
+ 	
+ 	There are numerous tools available that have the necessary functions to complete the tasks of this workshop. Listed below is a short list of online based tools and suggested downloadable software.
+ 	
+ 	\begin{table}[h!]
+ 	\footnotesize
+ 	\caption{Suggested software for this workshop and beyond.}
+ 	\centering
+ 	\begin{tabular}{@{}lll}
+ 		\toprule
+ 		Software & Functionality & Link \\
+ 		\midrule
+ 		SnapGene Viewer	& sequence visualisation, primer design & \href{https://www.snapgene.com/snapgene-viewer/}{snapgene.com} \\ 
+ 		Jalview & sequence alignment and analysis & \href{http://www.jalview.org/getdown/release/#}{jalview.org}\\
+ 		TAIR & \textit{Arabidopsis} databank (traffic limited) & \href{https://www.arabidopsis.org}{arabidopsis.org} \\ 
+ 		ThaleMine & unlimited alternative to TAIR &  \href{https://apps.araport.org/thalemine/begin.do}{araport.org} \\ 
+ 		Phytozome & general plant database & \href{https://phytozome.jgi.doe.gov/pz/portal.html#}{phytozome.jgi.doe.gov}\\ 
+ 		Primer blast & primer design and testing & \href{https://www.ncbi.nlm.nih.gov/tools/primer-blast/}{ncbi.nlm.nih.gov} \\
+ 		\bottomrule
+ 	\end{tabular}
+  	\end{table}
+ 
+ 
+	\section{Identifying paralogs\label{sec:find}}
+	
+	Paralogs, being products of relatively recent duplication of the same gene, are characterised by a high degree of sequence similarity. 
+	The most popular tool to identify sequences that are similar to the entered query is the Basic Local Alignment Search Tool, or \textsc{blast}. 
+	The degree of similarity is most succinctly summarised in the \textit{E-value}, which essentially represents the likelihood of the query and result being as similar as they are by pure chance instead of common origin.
+	A simplified way of defining a gene family is as the group of sequences sharing the highest degree of similarity within the genome of a given species.
+	
+	\paragraph*{What sequence to use?} 
+	What type of sequence should you use? Think about what characterises nucleotide and protein sequences, and which one would be better suited to reliably identify homologous sequences. Theoretically, would the time that has passed since the duplication events play a role?Hint
+	
+	\paragraph*{Paralogs, duplicate entries \& splice variants.} 
+	Depending on your gene family and the sequence type, your \textsc{blast} results will probably include all three of those. 
+	Genes are unambiguously identified by their genomic position, or \href{https://www.arabidopsis.org/portals/nomenclature/guidelines.jsp#locus}{\textit{locus}}.
+	Multiple \textsc{blast} results that have the same locus are just duplicate sequence submissions of the same gene. Protein or mRNA sequences whose loci only vary in the trailing decimal (\textit{e.g.} AT1G27920.1 and AT1G27920.2), are splice variants of the same gene.
+	
+	\vspace*{\baselineskip}
+	
+		\noindent\begin{tabular}{@{}ll}
+		\textbf{Software:}	& SnapGene Viewer \\ 
+		&\\
+		\textbf{Web tools:}	& \href{https://blast.ncbi.nlm.nih.gov/Blast.cgi}{NCBI \textsc{blast}} \\ 
+		&  \href{https://www.arabidopsis.org/Blast/}{TAIR \textsc{blast}} \\ 
+		&  \href{https://phytozome.jgi.doe.gov/pz/portal.html#!search?show=BLAST}{Phytozome \textsc{blast}}\\ 
+		\end{tabular} 
+	
+	\section{Drawing a phylogenetic tree\label{sec:phylo}}
+	
+	\section{Mapping gene structure\label{sec:str}}
+	
+	\section{Designing RT-qPCR primers\label{sec:qpcr}}
+	
+	\section{Detecting mutations\label{sec:mut}}
+ 	
+ 	
+\end{document}

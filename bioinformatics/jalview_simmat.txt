@@ -1,0 +1,29 @@
+boolean selview=false // use current selection or whole alignment
+
+boolean includeids=true // false to report in strict PHYLIP where no OTUs are given
+
+jalview.gui.AlignViewport av = Jalview.getAlignFrames()[0].getViewport();
+
+jalview.datamodel.AlignmentView seqStrings = av.getAlignmentView(selview);
+
+if (!selview) {
+   start = 0;
+   end = av.getAlignment().getWidth();
+   seqs = av.getAlignment().getSequencesArray();
+} else {
+   start = av.getSelectionGroup().getStartRes();
+   end = av.getSelectionGroup().getEndRes() + 1;
+   seqs = av.getSelectionGroup().getSequencesInOrder(av.getAlignment());
+}
+
+options = jalview.analysis.scoremodels.SimilarityParams.Jalview;
+distance = new jalview.analysis.scoremodels.PIDModel().findDistances(seqStrings, options);
+
+
+print distance.height()+"\n"
+p = 0;
+for (r in 0..<distance.height()) {
+    if (includeids) { print seqs[p++].getDisplayId(false)+" "; };
+    for (c in 0..<distance.width()) { printf "%6.2f ", 100 - distance.getValue(r,c); }; //100 - dissimilarity to convert to similarity
+    print "\n";
+}
