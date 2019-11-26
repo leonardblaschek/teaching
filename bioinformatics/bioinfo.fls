@@ -111,5 +111,7 @@ INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmr10.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmmi10.tfm
 INPUT /usr/share/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
 INPUT /home/leonard/.texlive/texmf-var/luatex-cache/generic/fonts/otl/lmmono10-regular.luc
+INPUT /home/leonard/.texlive/texmf-var/luatex-cache/generic/fonts/otl/lmroman8-regular.luc
 INPUT ./bioinfo.aux
+INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
 INPUT /usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb

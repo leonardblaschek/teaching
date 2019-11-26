@@ -119,7 +119,44 @@
 	
 	\section{Mapping gene structure\label{sec:str}}
 	
+	Mapping exons, introns and UTRs onto a genomic DNA sequence is a fundamental part of gene annotation. The easiest way to do it through simple sequence alignment. Just remember which sequences (gDNA, mRNA, CDS) contain which parts of the gene.
+	
+	\vspace*{\baselineskip}
+	
+	\noindent\begin{tabular}{@{}ll}
+		\textbf{Suggested tools:} & Jalview \\
+		& SnapGene Viewer
+	\end{tabular} 
+	
 	\section{Designing RT-qPCR primers\label{sec:qpcr}}
+	
+	Multigenic families pose additional challenges when analysing their expression. Because their sequences are so similar, it can be difficult to find primers that are specific to only one paralog. It is often a good idea to design primers in the UTRs of the gene, since those are usually less conserved between paralogs. Even more difficult is the design of splice variant specific primers, which you need to design in the specific regions that are differently spliced.
+	
+	RT-qPCR primers need to be designed to rather strict specifications to maximise the chance for successful experiments:
+\begin{table}[h!]
+		\caption{Restraints for the design of qPCR primers}
+		\centering
+	\begin{tabular}{@{}lll}
+		\toprule
+		Parameter & Ideal & Acceptable \\
+		\midrule
+		Primer length & 20 bases & 18--22 bases \\
+		G/C content & > 50\% & > 40\% \\
+		T\textsubscript{m}& 60°C & 58--63°C \\
+		$\Delta$T\textsubscript{m} & < 0.5°C & < 1°C \\
+		off-target \textsc{blast} hits & none & mismatch at 3'-end \\
+		Amplicon length & 180--200 bp & 140--220 bp \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+	\vspace*{\baselineskip}
+
+\noindent\begin{tabular}{@{}ll}
+	\textbf{Suggested tools:} & SnapGene Viewer \\
+	& \href{https://www.ncbi.nlm.nih.gov/tools/primer-blast/}{Primer \textsc{blast}} \\
+	& \href{https://blast.ncbi.nlm.nih.gov/Blast.cgi}{NCBI \textsc{blast}} \\
+\end{tabular} 
 	
 	\section{Detecting mutations\label{sec:mut}}
  	
