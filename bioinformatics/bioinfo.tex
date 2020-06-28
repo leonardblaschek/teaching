@@ -92,11 +92,11 @@
 	
 	\vspace*{\baselineskip}
 	
-		\noindent\begin{tabular}{@{}ll}
+	\noindent\begin{tabular}{@{}ll}
 		\textbf{Suggested tools:}	& \href{https://blast.ncbi.nlm.nih.gov/Blast.cgi}{NCBI \textsc{blast}} \\ 
 		&  \href{https://www.arabidopsis.org/Blast/}{TAIR \textsc{blast}} \\ 
 		&  \href{https://phytozome.jgi.doe.gov/pz/portal.html#!search?show=BLAST}{Phytozome \textsc{blast}}\\ 
-		\end{tabular} 
+	\end{tabular} 
 	
 	\section{Analysing sequence similarity\label{sec:phylo}}
 	
@@ -109,7 +109,7 @@
 	A short macro to obtain a percent similarity matrix of all your sequences in Jalview you can copy from \href{https://github.com/leonardblaschek/teaching/blob/master/bioinformatics/jalview_simmat.txt}{here}. 
 	After computing your alignment, simply open the console (\texttt{Tools $\rightarrow$ Groovy Console...}), paste the script into the box and execute it.
 	
-	\paragraph*{Pylogenetic trees.}To get a good overview of the similarities between all your sequences at once, we draw phylogenetic trees. The distance matrices underlying phylogenetic trees are, put simply, more sophisticated versions of the percent similarity matrix above. In order to \textit{root} the phylogeny, ou will need to include an \textit{outgroup}. An outgroup is any sequence that is closely related to your paralogs, but not as closely as the paralogs to each other. To choose an outgroup sequence you can simply select a sequence from further down the list in your blast results with a higher E-value than your paralogs. Only when a tree is rooted can you make inferences about the \href{https://evolution.berkeley.edu/evolibrary/article/evo_05}{\textit{direction}} of the tree, \textit{i.e.} which sequences are ancestral and which are more recently diverged. To create a phylogenetic tree in Jalview, select \texttt{Calculate $\rightarrow$ Calculate Tree or PCA...}.
+	\paragraph*{Phylogenetic trees.}To get a good overview of the similarities between many sequences at once, we draw phylogenetic trees. The distance matrices underlying phylogenetic trees are, put simply, more sophisticated versions of the percent similarity matrix above. In order to \textit{root} the phylogeny, ou will need to include an \textit{outgroup}. An outgroup is any sequence that is closely related to your paralogs, but not as closely as the paralogs to each other. To choose an outgroup sequence you can simply select a sequence from further down the list in your blast results with a higher E-value than your paralogs. Only when a tree is rooted can you make inferences about the \href{https://evolution.berkeley.edu/evolibrary/article/evo_05}{\textit{direction}} of the tree, \textit{i.e.} which sequences are ancestral and which are more recently diverged. To create a phylogenetic tree in Jalview, select \texttt{Calculate $\rightarrow$ Calculate Tree or PCA...}.
 	
 	\vspace*{\baselineskip}
 	
@@ -132,10 +132,11 @@
 	
 	Multigenic families pose additional challenges when analysing their expression. Because their sequences are so similar, it can be difficult to find primers that are specific to only one paralog. It is often a good idea to design primers in the UTRs of the gene, since those are usually less conserved between paralogs. Even more difficult is the design of splice variant specific primers, which you need to design in the specific regions that are differently spliced.
 	
-	RT-qPCR primers need to be designed to rather strict specifications to maximise the chance for successful experiments:
-\begin{table}[h!]
-		\caption{Restraints for the design of qPCR primers}
-		\centering
+	RT-qPCR primers need to be designed to rather strict specifications to maximise the chance for successful experiments, as summarised in table \ref{tab:primers}.
+	\begin{table}[h!]
+	\caption{Restraints for the design of qPCR primers}
+	\label{tab:primers}
+	\centering
 	\begin{tabular}{@{}lll}
 		\toprule
 		Parameter & Ideal & Acceptable \\
@@ -148,15 +149,15 @@
 		Amplicon length & 180--200 bp & 140--220 bp \\
 		\bottomrule
 	\end{tabular}
-\end{table}
+	\end{table}
 
 	\vspace*{\baselineskip}
 
-\noindent\begin{tabular}{@{}ll}
-	\textbf{Suggested tools:} & SnapGene Viewer \\
-	& \href{https://www.ncbi.nlm.nih.gov/tools/primer-blast/}{Primer \textsc{blast}} \\
-	& \href{https://blast.ncbi.nlm.nih.gov/Blast.cgi}{NCBI \textsc{blast}} \\
-\end{tabular} 
+	\noindent\begin{tabular}{@{}ll}
+		\textbf{Suggested tools:} & SnapGene Viewer \\
+		& \href{https://www.ncbi.nlm.nih.gov/tools/primer-blast/}{Primer \textsc{blast}} \\
+		& \href{https://blast.ncbi.nlm.nih.gov/Blast.cgi}{NCBI \textsc{blast}} \\
+	\end{tabular} 
 	
 	\section{Detecting mutations\label{sec:mut}}
  	
