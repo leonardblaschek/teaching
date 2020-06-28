@@ -40,7 +40,7 @@
  	Because they share a common origin, paralogs are \textit{homologous} (as opposed to genes that serve similar functions as a result of convergent evolution, which are \href{https://evolution.berkeley.edu/evolibrary/article/evo_09}{\textit{analogous}}\marginpar{\footnotesize\textcolor{SU}{Blue text} can be clicked and links to sections or web resources.}).
  	To increase the variability of functions within a gene family even further, the expression of the same paralog can result in different transcripts through a mechanism called \textit{alternative splicing}.
  	Consequentially, studying gene families and their variable functions is fundamental to our understanding of both plant physiology and adaptive evolution.
- 	
+
  	\vspace*{1em}
  	
  	In this workshop, you will:
@@ -51,6 +51,21 @@
  		\item Design paralog specific \hyperref[sec:qpcr]{RT-qPCR primers}
  		\item Design primers to identify a \hyperref[sec:mut]{T-DNA insertion} and a single nucleotide polymorphism in one of the paralogs
  	\end{enumerate}
+ 	
+ 	\section*{Meta introduction}
+ 	In this workshop, you will be doing an \textit{in silico} characterization of a gene family. The goal is to help you master a couple of fundamental tools in bioinformatics, and hone your critical problem solving skills. This type of analysis can be part of a broader scientific question, and is often done in combination with experiments. The methods that you will learn are broadly applicable for any other bioinformatical analysis that you may have to do in the future.
+ 	
+    The tasks in this project will require you to integrate multiple methods to reach a solution. As part of the exercise, you may have to seek out additional information, and decide on how to best apply the methods yourself. It is important that your strategy is not limited by your fundamental knowledge of genetics and molecular biology. If you do not understand the operating principles of the presented tools, it is advisable that you re-read through those chapters in your favorite undergraduate textbook. Pay special attention that you understand the central dogma of molecular biology, as the processes are directly relevant for correctly applying the methods.
+    
+    This document will point you in the right directions. Helpful considerations will be mentioned, although the specific implementations is for you to discover. You will find lists of recommended software and databases. However, feel free to use any other tools you may find if they suit your preferences. Lastly, the presented tools are all well-documented on their own. You may wish to consult this material throughout this project.
+    
+    \section*{Fetching sequences}
+    The standard way of storing sequences on your computer is in the FASTA format. FASTA files are simply text, and can be opened in any text editor. If a program is having difficulties reading a FASTA file, ensure that the file extension is \texttt{.fasta}.
+    The first line of a FASTA sequence always begins with a \texttt{>}, followed by reference information such as the gene identifier and chromosomal position. This is followed by the sequence denoted in either nucleotides, or amino acids depending on its type. Occasionally, you will encounter ambiguous codes such as \texttt{N} in DNA/RNA sequences, and \texttt{X} in protein sequences. These indicate low quality reads during sequencing. They are not necessarily problematic, but make sure that the tools you plan on using supports their presence.
+    
+    You can find sequences for genes, transcripts and proteins in several publicly available databases (refer to Table 1). On Phytozome, you can search for keywords in a given species, click on the gene view of a hit (\texttt{G}), and then go into the \texttt{Sequences} tab.
+    
+    On NCBI, search using the \texttt{Gene} database. Clicking on a hit will give you plenty of additional information, including cross-references to potential transcripts (denoted by \texttt{NM\_xxxx}) and proteins (\texttt{NP\_xxxx}). Find the \texttt{FASTA} button to fetch the sequence.
  
  	\section*{Software and web tools}
  	
@@ -159,6 +174,10 @@
 \end{tabular} 
 	
 	\section{Detecting mutations\label{sec:mut}}
+ 	Phenotyping mutants requires the zygosity of the mutation to be determined. Commonly, the initial step is to amplify the region surrounding the mutation. Genotyping can then be done through various ways depending on the type of mutation. SNPs can be characterized through CAPS (restriction enzyme digest), TILLING (heteroduplex formation) or direct sequencing. Insertions are easier to detect as the sequence of the inserted DNA is known. Please refer to \href{http://signal.salk.edu/tdnaprimers.2.html}{SIGnaL} for the genotyping strategy of T-DNA lines.
  	
+ 	Mutant lines can be found on TAIR, in the \texttt{Polymorphism} section of a gene. It will report what kind of mutations there are, and their positions. For insertional mutations, the position is approximated by the Flanking Sequence Tag (FST). You can also find T-DNA lines directly via  \href{http://signal.salk.edu/cgi-bin/tdnaexpress}{T-DNA Express}. Simply supply the gene identifier in the \texttt{Query} field, and it will give you a map of associated T-DNA insertions.
+ 	
+ 	Standard rules apply when designing primers for genotyping. Make sure they are specific, and have acceptable thermodynamic properties. The amplicon has to include the potential mutation site, aim for a maximum length of ~1 kbp for T-DNA inserts.
  	
 \end{document}
