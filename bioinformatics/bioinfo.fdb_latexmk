@@ -1,5 +1,5 @@
 # Fdb version 3
-["lualatex"] 1574863519 "bioinfo.tex" "bioinfo.pdf" "bioinfo" 1574863520
+["lualatex"] 1593879090 "bioinfo.tex" "bioinfo.pdf" "bioinfo" 1593879091
   "/home/leonard/.texlive/texmf-var/luatex-cache/generic/fonts/otl/lmmono10-regular.luc" 1574517773 77653 86040e3154b6f32012afb10cd04f8016 ""
   "/home/leonard/.texlive/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-bold.luc" 1573932569 124218 8f419c5ea55679a7b7b27d0c866e6928 ""
   "/home/leonard/.texlive/texmf-var/luatex-cache/generic/fonts/otl/lmroman10-italic.luc" 1573932570 132144 4a14d6624b6c49efd6e0df877a9177ca ""
@@ -79,13 +79,13 @@
   "/usr/share/texmf-dist/tex/luatex/lualibs/lualibs-compat.lua" 1572595918 603 398583cb619d20952d67edcedae41608 ""
   "/usr/share/texmf-dist/tex/luatex/lualibs/lualibs-extended-merged.lua" 1572595918 106726 b9487c3941f8caa790ecdcbc5a03b311 ""
   "/usr/share/texmf-dist/tex/luatex/lualibs/lualibs-extended.lua" 1572595918 4894 788132acfaf05394117da617b5a863fa ""
-  "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1573909918 4569562 1260569e6693d3dc73846fd64ebfa574 ""
-  "/var/lib/texmf/web2c/luatex/lualatex.fmt" 1573909909 1400561 7d50d2d6d9a17d407131c5f85ae81366 ""
-  "bioinfo.aux" 1574863520 1983 11493eb671d757647488916b2bc7a4eb "lualatex"
-  "bioinfo.out" 1574863520 814 32396e4c210d934a7ed3e7990606080e "lualatex"
-  "bioinfo.tex" 1574863519 10478 d6c8d8b3f1c50b575883d287c9be2e89 ""
+  "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1589709882 4569562 1260569e6693d3dc73846fd64ebfa574 ""
+  "/var/lib/texmf/web2c/luatex/lualatex.fmt" 1589709865 1400557 17e4117d233342f452fef71bd22b2564 ""
+  "bioinfo.aux" 1593879091 2075 3da809ac650552534b9639d790dc5604 "lualatex"
+  "bioinfo.out" 1593879091 814 32396e4c210d934a7ed3e7990606080e "lualatex"
+  "bioinfo.tex" 1593879090 14870 a29acb2f8c89639bf7b89842d9ef84ca ""
   (generated)
+  "bioinfo.log"
+  "bioinfo.aux"
   "bioinfo.pdf"
   "bioinfo.out"
-  "bioinfo.aux"
-  "bioinfo.log"

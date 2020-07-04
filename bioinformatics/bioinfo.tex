@@ -30,20 +30,20 @@
 \begin{document}
  	\maketitle
  	
- 	\section*{Introduction}
+ 	\section*{Introduction to multigenic families}
  	
  	Gene and genome duplication is a crucial cornerstone of plants' ability to adapt and evolve.
  	In duplicating genes and forming multi-genic families, the plant creates redundancy in the machinery necessary to maintain its physiological functions. 
  	The new, redundant gene can either remain as it is and function as a backup against metabolic disruptions, or evolve to fulfil a subset of the original gene's functions --  a process called \textit{subfunctionalisation}.
  	It can even develop a completely new function, undergoing \textit{neofunctionalisation}.
  	These new gene copies -- called paralogs -- allow the plant to adapt to new environments, outcompete rivals or defend against new enemies.
- 	Because they share a common origin, paralogs are \textit{homologous} (as opposed to genes that serve similar functions as a result of convergent evolution, which are \href{https://evolution.berkeley.edu/evolibrary/article/evo_09}{\textit{analogous}}\marginpar{\footnotesize\textcolor{SU}{Blue text} can be clicked and links to sections or web resources.}).
+ 	Because they share a common origin, paralogs are \textit{homologous} (as opposed to genes that serve similar functions as a result of convergent evolution, which are \href{https://evolution.berkeley.edu/evolibrary/article/evo_09}{\textit{analogous}}).\marginpar{\footnotesize\textcolor{SU}{Blue text} can be clicked and links to sections or web resources.}
  	To increase the variability of functions within a gene family even further, the expression of the same paralog can result in different transcripts through a mechanism called \textit{alternative splicing}.
  	Consequentially, studying gene families and their variable functions is fundamental to our understanding of both plant physiology and adaptive evolution.
 
- 	\vspace*{1em}
+ 	\section*{The goal of this workshop}
  	
- 	In this workshop, you will:
+ 	In this workshop you will characterise a gene family \textit{in silico}. Specifically, you will:
  	\begin{enumerate}
  		\item \hyperref[sec:find]{Identify} all paralogs of a gene family in \textit{Arabidopsis thaliana} and its \textit{orthologs} in other species
  		\item \hyperref[sec:phylo]{Analyse sequence similarity} between the paralogs and orthologs and visualise it by drawing a phylogenetic tree
@@ -52,20 +52,35 @@
  		\item Design primers to identify a \hyperref[sec:mut]{T-DNA insertion} and a single nucleotide polymorphism in one of the paralogs
  	\end{enumerate}
  	
- 	\section*{Meta introduction}
- 	In this workshop, you will be doing an \textit{in silico} characterization of a gene family. The goal is to help you master a couple of fundamental tools in bioinformatics, and hone your critical problem solving skills. This type of analysis can be part of a broader scientific question, and is often done in combination with experiments. The methods that you will learn are broadly applicable for any other bioinformatical analysis that you may have to do in the future.
  	
-    The tasks in this project will require you to integrate multiple methods to reach a solution. As part of the exercise, you may have to seek out additional information, and decide on how to best apply the methods yourself. It is important that your strategy is not limited by your fundamental knowledge of genetics and molecular biology. If you do not understand the operating principles of the presented tools, it is advisable that you re-read through those chapters in your favorite undergraduate textbook. Pay special attention that you understand the central dogma of molecular biology, as the processes are directly relevant for correctly applying the methods.
+ 	In the process, you will learn to use the strengths (and overcome the weaknesses) of core bioinformatic tools for molecular genetics. 
+ 	Beyond it's purpose for training, this type of analysis is a fundamental part of planning and executing experimental work in molecular genetics and biotechnology.
+ 	The tasks in this project will require you to integrate multiple methods to reach a solution. 
+ 	As part of the exercise, you may have to seek out additional information, and decide on how to best apply the methods yourself. 
+ 	It is important that your strategy is not limited by your fundamental knowledge of genetics and molecular biology. 
+ 	If you do not understand the operating principles of the presented tools, re-read the respective chapters in your favourite textbook. 
+ 	Pay special attention that you understand the central dogma of molecular biology, as the processes are directly relevant for correctly applying the methods.
     
-    This document will point you in the right directions. Helpful considerations will be mentioned, although the specific implementations is for you to discover. You will find lists of recommended software and databases. However, feel free to use any other tools you may find if they suit your preferences. Lastly, the presented tools are all well-documented on their own. You may wish to consult this material throughout this project.
+    This document will point you in the right directions. 
+    Helpful considerations will be mentioned, although the specific implementations is for you to discover.
+    We point you to towards tools and databases that are cross-platform (useable on Windows, Mac and Linux) and that we are familiar with. 
+    You are very welcome to experiment with other tools, but be aware that we might not be able to help if you run into problems with them.
     
-    \section*{Fetching sequences}
-    The standard way of storing sequences on your computer is in the FASTA format. FASTA files are simply text, and can be opened in any text editor. If a program is having difficulties reading a FASTA file, ensure that the file extension is \texttt{.fasta}.
-    The first line of a FASTA sequence always begins with a \texttt{>}, followed by reference information such as the gene identifier and chromosomal position. This is followed by the sequence denoted in either nucleotides, or amino acids depending on its type. Occasionally, you will encounter ambiguous codes such as \texttt{N} in DNA/RNA sequences, and \texttt{X} in protein sequences. These indicate low quality reads during sequencing. They are not necessarily problematic, but make sure that the tools you plan on using supports their presence.
-    
-    You can find sequences for genes, transcripts and proteins in several publicly available databases (refer to Table 1). On Phytozome, you can search for keywords in a given species, click on the gene view of a hit (\texttt{G}), and then go into the \texttt{Sequences} tab.
-    
-    On NCBI, search using the \texttt{Gene} database. Clicking on a hit will give you plenty of additional information, including cross-references to potential transcripts (denoted by \texttt{NM\_xxxx}) and proteins (\texttt{NP\_xxxx}). Find the \texttt{FASTA} button to fetch the sequence.
+    \section*{Sequence information and annotation}
+    The standard way of digitally storing sequences is in the FASTA format. 
+    FASTA files are simple text, and can be opened in any text editor. 
+    If a program is having difficulties reading a FASTA file, ensure that the file extension is \texttt{.fasta}.
+    The first line of a FASTA sequence always begins with a \texttt{>}, followed by reference information such as the gene identifier and chromosomal position.
+    This is followed by the sequence denoted in either nucleotides, or amino acids depending on its type.
+    Occasionally, you will encounter ambiguous codes such as \texttt{N} in DNA/RNA sequences, and \texttt{X} in protein sequences.
+    These indicate low quality reads during sequencing.
+    They are not necessarily problematic, but make sure that the tools you plan on using supports their presence.
+    You can find sequences for genes, transcripts and proteins in several publicly available databases (refer to Table \ref{tab:software}). 
+    On Phytozome, you can search for keywords in a given species, click on the gene view of a hit (\texttt{G}), and then go into the \texttt{Sequences} tab. 
+    On NCBI, search using the \texttt{Gene} database. 
+    \marginpar{\footnotesize For a detailed explanation of the NCBI accession prefixes, see \href{https://www.ncbi.nlm.nih.gov/books/NBK21091/table/ch18.T.refseq_accession_numbers_and_mole/?report=objectonly}{here}.}
+    Clicking on a hit will give you plenty of additional information, including cross-references to potential transcripts (generally denoted by \texttt{NM\_xxxx}) and proteins (\texttt{NP\_xxxx}). 
+    Find the \texttt{FASTA} link to fetch the sequence.
  
  	\section*{Software and web tools}
  	
@@ -74,6 +89,7 @@
  	\begin{table}[h!]
  	\footnotesize
  	\caption{Suggested software for this workshop and beyond.}
+ 	\label{tab:software}
  	\centering
  	\begin{tabular}{@{}lll}
  		\toprule
@@ -88,7 +104,6 @@
  		\bottomrule
  	\end{tabular}
   	\end{table}
-    \marginpar{\footnotesize Jalview is also available through \href{https://anaconda.org/bioconda/jalview}{bioconda}, if you are into that sorta thing.}
  
 	\section{Identifying paralogs\label{sec:find}}
 	
@@ -124,7 +139,13 @@
 	A short macro to obtain a percent similarity matrix of all your sequences in Jalview you can copy from \href{https://github.com/leonardblaschek/teaching/blob/master/bioinformatics/jalview_simmat.txt}{here}. 
 	After computing your alignment, simply open the console (\texttt{Tools $\rightarrow$ Groovy Console...}), paste the script into the box and execute it.
 	
-	\paragraph*{Phylogenetic trees.}To get a good overview of the similarities between many sequences at once, we draw phylogenetic trees. The distance matrices underlying phylogenetic trees are, put simply, more sophisticated versions of the percent similarity matrix above. In order to \textit{root} the phylogeny, ou will need to include an \textit{outgroup}. An outgroup is any sequence that is closely related to your paralogs, but not as closely as the paralogs to each other. To choose an outgroup sequence you can simply select a sequence from further down the list in your blast results with a higher E-value than your paralogs. Only when a tree is rooted can you make inferences about the \href{https://evolution.berkeley.edu/evolibrary/article/evo_05}{\textit{direction}} of the tree, \textit{i.e.} which sequences are ancestral and which are more recently diverged. To create a phylogenetic tree in Jalview, select \texttt{Calculate $\rightarrow$ Calculate Tree or PCA...}.
+	\paragraph*{Phylogenetic trees.}To get a good overview of the similarities between many sequences at once, we draw phylogenetic trees. 
+	The distance matrices underlying phylogenetic trees are, put simply, more sophisticated versions of the percent similarity matrix above. 
+	In order to \textit{root} the phylogeny, ou will need to include an \textit{outgroup}. 
+	An outgroup is any sequence that is closely related to your paralogs, but not as closely as the paralogs to each other. 
+	To choose an outgroup sequence you can simply select a sequence from further down the list in your blast results with a higher E-value than your paralogs. 
+	Only when a tree is rooted can you make inferences about the \href{https://evolution.berkeley.edu/evolibrary/article/evo_05}{\textit{direction}} of the tree, \textit{i.e.} which sequences are ancestral and which are more recently diverged. 
+	To create a phylogenetic tree in Jalview, select \texttt{Calculate $\rightarrow$ Calculate Tree or PCA...}.
 	
 	\vspace*{\baselineskip}
 	
@@ -134,7 +155,8 @@
 	
 	\section{Mapping gene structure\label{sec:str}}
 	
-	Mapping exons, introns and UTRs onto a genomic DNA sequence is a fundamental part of gene annotation. The easiest way to do it through simple sequence alignment. Just remember which sequences (gDNA, mRNA, CDS) contain which parts of the gene.
+	Mapping exons, introns and UTRs onto a genomic DNA sequence is a fundamental part of gene annotation. 
+	The easiest way to do it through simple sequence alignment. Just remember which sequences (gDNA, mRNA, CDS) contain which parts of the gene.
 	
 	\vspace*{\baselineskip}
 	
@@ -145,7 +167,10 @@
 	
 	\section{Designing RT-qPCR primers\label{sec:qpcr}}
 	
-	Multigenic families pose additional challenges when analysing their expression. Because their sequences are so similar, it can be difficult to find primers that are specific to only one paralog. It is often a good idea to design primers in the UTRs of the gene, since those are usually less conserved between paralogs. Even more difficult is the design of splice variant specific primers, which you need to design in the specific regions that are differently spliced.
+	Multigenic families pose additional challenges when analysing their expression. 
+	Because their sequences are so similar, it can be difficult to find primers that are specific to only one paralog. 
+	It is often a good idea to design primers in the UTRs of the gene, since those are usually less conserved between paralogs. 
+	Even more difficult is the design of splice variant specific primers, which you need to design in the specific regions that are differently spliced.
 	
 	RT-qPCR primers need to be designed to rather strict specifications to maximise the chance for successful experiments, as summarised in table \ref{tab:primers}.
 	\begin{table}[h!]
@@ -175,10 +200,16 @@
 	\end{tabular} 
 	
 	\section{Detecting mutations\label{sec:mut}}
- 	Phenotyping mutants requires the zygosity of the mutation to be determined. Commonly, the initial step is to amplify the region surrounding the mutation. Genotyping can then be done through various ways depending on the type of mutation. SNPs can be characterized through CAPS (restriction enzyme digest), TILLING (heteroduplex formation) or direct sequencing. Insertions are easier to detect as the sequence of the inserted DNA is known. Please refer to \href{http://signal.salk.edu/tdnaprimers.2.html}{SIGnaL} for the genotyping strategy of T-DNA lines.
- 	
- 	Mutant lines can be found on TAIR, in the \texttt{Polymorphism} section of a gene. It will report what kind of mutations there are, and their positions. For insertional mutations, the position is approximated by the Flanking Sequence Tag (FST). You can also find T-DNA lines directly via  \href{http://signal.salk.edu/cgi-bin/tdnaexpress}{T-DNA Express}. Simply supply the gene identifier in the \texttt{Query} field, and it will give you a map of associated T-DNA insertions.
- 	
- 	Standard rules apply when designing primers for genotyping. Make sure they are specific, and have acceptable thermodynamic properties. The amplicon has to include the potential mutation site, aim for a maximum length of ~1 kbp for T-DNA inserts.
+ 	Phenotyping mutants requires the zygosity of the mutation to be determined. 
+ 	Commonly, the initial step is to amplify the region surrounding the mutation. 
+ 	Genotyping can then be done through various ways depending on the type of mutation. 
+ 	SNPs can be characterized through CAPS (restriction enzyme digest), TILLING (heteroduplex formation) or direct sequencing. 
+ 	Insertions are easier to detect, since part of the inserted DNA sequence is known. Please refer to \href{http://signal.salk.edu/tdnaprimers.2.html}{SIGnaL} for the genotyping strategy of T-DNA lines.
+ 	Mutant lines can be found on TAIR, in the \texttt{Polymorphism} section of a gene. 
+ 	It will report what kind of mutations there are, and their positions. 
+ 	For insertional mutations, the position is approximated by the Flanking Sequence Tag (FST). 
+ 	You can also find T-DNA lines directly via  \href{http://signal.salk.edu/cgi-bin/tdnaexpress}{T-DNA Express}. 
+ 	Simply supply the gene identifier in the \texttt{Query} field, and it will give you a map of associated T-DNA insertions.
+ 	Primer design for genotyping follows similar rules as that for RT-qPCR (table \ref{tab:primers}), except that you aim for amplicon sizes between 500 and 1000 bp, and pay less attention to the T\textsubscript{m}.
  	
 \end{document}
