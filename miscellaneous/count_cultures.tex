@@ -1,0 +1,55 @@
+\documentclass[11pt]{article}
+ 
+\usepackage[a4paper, 
+ 	width = 120mm,
+ 	height = 220mm]{geometry}
+
+\usepackage{color}
+\definecolor{SU}{RGB}{0, 46, 95}
+
+\usepackage{booktabs}
+
+\usepackage{microtype}
+ 	
+\usepackage{hyperref}
+\hypersetup{
+ 	colorlinks,
+ 	citecolor = black,
+ 	filecolor = black,
+ 	linkcolor = SU,
+ 	urlcolor = SU,
+ 	pdfauthor = {Leonard Blaschek},
+ 	pdftitle = {Bio-informatics guide},
+ 	pdfkeywords = {Lignin methods}
+}
+ 
+\title{A quick guide to colony counting in \textsc{Fiji}}
+ 
+\author{Leonard Blaschek}
+ 
+\begin{document}
+ 	\maketitle
+ 	
+ 	\section*{Considerations before you start}
+	This quick step-by-step guide will allow you to count colonies from pictures of agar plates.  As with most automated methodology, the precision and accuracy depends primarily on the quality of the input. Make sure that the colonies are large enough to be clearly visible, sparse enough to prevent adjacent colonies from overlapping, and that the picture has an even illumination and background.
+ 	
+ 	\section*{The counting procedure}
+ 	Once you have appropriate pictures, the procedure is as follows:
+ 	\begin{enumerate}
+ 		\item If not already done, download the \textsc{ImageJ} distribution \href{https://imagej.net/Fiji/Downloads}{\textsc{Fiji}}
+ 		\item Start \textsc{Fiji} and open the plate image
+ 		\item Make a circular selection of the whole plate and press \texttt{M} to measure; note down the area of the plate
+ 		\item Make a circular selection of a part of the plate that is free of writing and edges (aim for roughly 10--75\% of the whole plate); press \texttt{M} to measure and note down the area; make sure to maintain the selection for the next two steps
+ 		\item Do \texttt{Edit $\rightarrow$ Clear Outside} to remove everything from the picture except the selected region of the plate
+ 		\item Do \texttt{Process $\rightarrow$ Binary $\rightarrow$ Make Binary} to transform the picture into black (colonies) and white (background) 
+ 		\item Do \texttt{Process $\rightarrow$ Binary $\rightarrow$ Watershed} to separate overlapping colonies into individual spots
+ 		\item Make a new circular selection the size of a single colony; press \texttt{M} to measure and note down the area
+ 		\item Go to \texttt{Analyze $\rightarrow$ Analyze Particles...}
+ 		\item In the newly opened window, set the expected size of the colonies (\texttt{Size (pixel\textasciicircum2)}) according to the size of the colony you measured in step 8; set the range generously, \textit{e.g.} if you measured an area of 300 px, set the range to 100--1500 px
+ 		\item Leave \texttt{Circularity} at 0--1, select \texttt{Overlay Masks} from the \texttt{Show:} dropdown menu, and tick the \texttt{Summarize} and \texttt{In situ Show} boxes
+ 		\item Click \texttt{OK}
+ 		\item In the new \texttt{Summary} window, you see the number of counted colonies under \texttt{Count}; the counted colonies will appear coloured in the image, pixels that were ignored in the counting remain black
+ 		\item Finally, extrapolate the number of total colonies on the plate using the areas measured in steps 3. and 4.
+ 	\end{enumerate}
+ 		
+\end{document}
