@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+conda config \PYGZhy{}\PYGZhy{}add channels conda\PYGZhy{}forge
+\end{Verbatim}

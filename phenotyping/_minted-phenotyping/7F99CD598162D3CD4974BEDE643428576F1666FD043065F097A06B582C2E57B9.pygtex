@@ -1,0 +1,23 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+ch}{\PYGZsh{}!/bin/bash}
+\PYG{c+c1}{\PYGZsh{} define the date of germination for DPG (days past germination) calculation}
+\PYG{n+nv}{germination}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}20200824\PYGZdq{}}
+\PYG{c+c1}{\PYGZsh{} number of the first sequentially numbered trays/plants}
+\PYG{n+nv}{start}\PYG{o}{=}\PYG{l+m}{1}
+\PYG{c+c1}{\PYGZsh{} number of the last sequentially numbered trays/plants}
+\PYG{n+nv}{end}\PYG{o}{=}\PYG{l+m}{3}
+\PYG{c+c1}{\PYGZsh{} rename images by DPG and tray/plant number}
+\PYG{n+nv}{a}\PYG{o}{=}\PYG{n+nv}{\PYGZdl{}start}
+\PYG{k}{for} i \PYG{k}{in} *.JPG\PYG{p}{;} \PYG{k}{do}
+	\PYG{n+nv}{var1}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}\PYGZus{}\PYGZdq{}}
+	\PYG{n+nv}{DPG}\PYG{o}{=}\PYG{k}{\PYGZdl{}((} \PYG{o}{(}\PYG{k}{\PYGZdl{}(}date \PYGZhy{}r \PYG{l+s+s2}{\PYGZdq{}}\PYG{n+nv}{\PYGZdl{}i}\PYG{l+s+s2}{\PYGZdq{}} +\PYGZpc{}s\PYG{k}{)} \PYG{o}{\PYGZhy{}} \PYG{k}{\PYGZdl{}(}date \PYGZhy{}\PYGZhy{}date\PYG{o}{=}\PYG{n+nv}{\PYGZdl{}germination} +\PYGZpc{}s\PYG{k}{)} \PYG{o}{)}assign the starting
+		\PYG{o}{/} \PYG{o}{(}\PYG{l+m}{60}\PYG{o}{*}\PYG{l+m}{60}\PYG{o}{*}\PYG{l+m}{24}\PYG{o}{)} \PYG{k}{))}
+	mv \PYGZhy{}i \PYGZhy{}\PYGZhy{} \PYG{l+s+s2}{\PYGZdq{}}\PYG{n+nv}{\PYGZdl{}i}\PYG{l+s+s2}{\PYGZdq{}} \PYG{l+s+s2}{\PYGZdq{}}\PYG{n+nv}{\PYGZdl{}DPG\PYGZdl{}var1\PYGZdl{}a}\PYG{l+s+s2}{.jpg\PYGZdq{}}
+	\PYG{k}{if} \PYG{o}{[} \PYG{l+s+s2}{\PYGZdq{}}\PYG{n+nv}{\PYGZdl{}a}\PYG{l+s+s2}{\PYGZdq{}} \PYGZhy{}lt \PYG{n+nv}{\PYGZdl{}end} \PYG{o}{]}
+	\PYG{k}{then}
+		\PYG{n+nb}{let} \PYG{n+nv}{a}\PYG{o}{=}a+1
+	\PYG{k}{else}
+		\PYG{n+nb}{let} \PYG{n+nv}{a}\PYG{o}{=}\PYG{n+nv}{\PYGZdl{}start}
+	\PYG{k}{fi}
+\PYG{k}{done}
+\end{Verbatim}
