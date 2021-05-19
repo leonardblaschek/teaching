@@ -10,8 +10,7 @@
 \PYG{n+nv}{a}\PYG{o}{=}\PYG{n+nv}{\PYGZdl{}start}
 \PYG{k}{for} i \PYG{k}{in} *.JPG\PYG{p}{;} \PYG{k}{do}
 	\PYG{n+nv}{var1}\PYG{o}{=}\PYG{l+s+s2}{\PYGZdq{}\PYGZus{}\PYGZdq{}}
-	\PYG{n+nv}{DPG}\PYG{o}{=}\PYG{k}{\PYGZdl{}((} \PYG{o}{(}\PYG{k}{\PYGZdl{}(}date \PYGZhy{}r \PYG{l+s+s2}{\PYGZdq{}}\PYG{n+nv}{\PYGZdl{}i}\PYG{l+s+s2}{\PYGZdq{}} +\PYGZpc{}s\PYG{k}{)} \PYG{o}{\PYGZhy{}} \PYG{k}{\PYGZdl{}(}date \PYGZhy{}\PYGZhy{}date\PYG{o}{=}\PYG{n+nv}{\PYGZdl{}germination} +\PYGZpc{}s\PYG{k}{)} \PYG{o}{)}assign the starting
-		\PYG{o}{/} \PYG{o}{(}\PYG{l+m}{60}\PYG{o}{*}\PYG{l+m}{60}\PYG{o}{*}\PYG{l+m}{24}\PYG{o}{)} \PYG{k}{))}
+	\PYG{n+nv}{DPG}\PYG{o}{=}\PYG{k}{\PYGZdl{}((} \PYG{o}{(}\PYG{k}{\PYGZdl{}(}date \PYGZhy{}r \PYG{l+s+s2}{\PYGZdq{}}\PYG{n+nv}{\PYGZdl{}i}\PYG{l+s+s2}{\PYGZdq{}} +\PYGZpc{}s\PYG{k}{)} \PYG{o}{\PYGZhy{}} \PYG{k}{\PYGZdl{}(}date \PYGZhy{}\PYGZhy{}date\PYG{o}{=}\PYG{n+nv}{\PYGZdl{}germination} +\PYGZpc{}s\PYG{k}{)} \PYG{o}{)/(}\PYG{l+m}{60}\PYG{o}{*}\PYG{l+m}{60}\PYG{o}{*}\PYG{l+m}{24}\PYG{o}{)} \PYG{k}{))}
 	mv \PYGZhy{}i \PYGZhy{}\PYGZhy{} \PYG{l+s+s2}{\PYGZdq{}}\PYG{n+nv}{\PYGZdl{}i}\PYG{l+s+s2}{\PYGZdq{}} \PYG{l+s+s2}{\PYGZdq{}}\PYG{n+nv}{\PYGZdl{}DPG\PYGZdl{}var1\PYGZdl{}a}\PYG{l+s+s2}{.jpg\PYGZdq{}}
 	\PYG{k}{if} \PYG{o}{[} \PYG{l+s+s2}{\PYGZdq{}}\PYG{n+nv}{\PYGZdl{}a}\PYG{l+s+s2}{\PYGZdq{}} \PYGZhy{}lt \PYG{n+nv}{\PYGZdl{}end} \PYG{o}{]}
 	\PYG{k}{then}

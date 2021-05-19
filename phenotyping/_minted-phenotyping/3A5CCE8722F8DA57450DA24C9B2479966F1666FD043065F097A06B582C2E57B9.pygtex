@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+conda activate plantcv \PYG{c+c1}{\PYGZsh{} activate the plantcv conda environment}
+conda install \PYGZhy{}c conda\PYGZhy{}forge jupyterlab \PYG{c+c1}{\PYGZsh{} install JupyterLab}
+conda install \PYGZhy{}c conda\PYGZhy{}forge imutils \PYG{c+c1}{\PYGZsh{} install imutils}
+\end{Verbatim}

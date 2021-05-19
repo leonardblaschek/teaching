@@ -67,9 +67,10 @@
 	
 	\tableofcontents
 	
-	\newpage
+	
+	\section{Image acquisition}
 
- 	\section{Rosette growth}
+ 	\subsection{Rosette growth}
  	
  	From germination until bolting, the plants are best imaged from the top. One big advantage of this is that the pots can be left in the tray, meaning that 15 plants can be analysed from a single picture. As you can see from the example image in figure \ref{fig:top}, I acquire the images without labels. Instead, I have labels on the side of the pots (see figure \ref{fig:front_before}). That of course means that you have to be very careful to document the order of pots (genotypes/replicates) in each tray, and orient the trays in the same way in each picture (put a label on one side of the tray to make sure you do not accidentally flip it 180°). You also need to carefully document which picture shows which tray. Lastly, bright markers (any colour that stands out, I use light blue) on the outer edges of the tray allow you to easily crop the image to the area of interest in the analysis. Lastly, taking the pictures always in the same order will save you a lot of time in the analysis (see section \ref{prep}).
  		
@@ -90,7 +91,7 @@
 	 	\item white balance set to "Incandescent"
 	 \end{itemize}
  
- 	\section{Inflorescence growth}
+ 	\subsection{Inflorescence growth}
  	
  	After the plants bolt, we switch to imaging from the front. Now we have to image each plant individually. Make sure that the label on the front of the pot is clearly visible in each image. Everything in the image that is \textit{not} the plant or the colour card, such as labels, sticks, pots, \textit{etc.} should be of a colour that is easy to distinguish from the plant. Because \textit{A. thaliana} can be green (leaves), white (flowers), purple (stressed leaves), yellow/beige/brown (plants in senescence), the ideal colour for foreign objects is blue (see stick in figure \ref{fig:front_after}). Just as with the rosette images, taking the pictures always in the same order will save you a lot of time in the analysis (see section \ref{prep}).
  	
@@ -136,8 +137,7 @@ end=3
 a=$start
 for i in *.JPG; do
 	var1="_"
-	DPG=$(( ($(date -r "$i" +%s) - $(date --date=$germination +%s) )assign the starting 
-		/ (60*60*24) ))
+	DPG=$(( ($(date -r "$i" +%s) - $(date --date=$germination +%s) )/(60*60*24) ))
 	mv -i -- "$i" "$DPG$var1$a.jpg"
 	if [ "$a" -lt $end ]
 	then
@@ -189,7 +189,83 @@ Now we install PlantCV in a new environment called \texttt{plantcv}:
 	conda create -n plantcv plantcv
 \end{bashcode}
 
-\subsection{Optimisation in Jupyter notebook}
+Last we will activate our new environment and install some additional packages:
+
+\begin{bashcode}
+	conda activate plantcv # activate the plantcv conda environment
+	conda install -c conda-forge jupyterlab # install JupyterLab
+	conda install -c conda-forge imutils # install imutils
+\end{bashcode}
+
+\subsection{Optimisation in JupyterLab}
+
+To see how well my (or any other) image analysis pipeline works for your specific images, first try it out on single images in \texttt{JupyterLab}. The advantage of this approach is that you get intermediate outputs at every step of the pipeline, easily letting you pinpoint any sections that need adjustment. First, make sure you are in the correct conda environment, then start up \texttt{JupyterLab}:
+
+\begin{bashcode}
+	conda activate plantcv # make sure you are in the correct conda environment
+	jupyter-lab # start JupyterLab
+\end{bashcode}
+
+\texttt{JupyterLab} will start in your default browser, check for a newly opened tab if you already had a browser window open.
+
+\subsubsection{Rosette growth}
+
+Lets start with the images from the top. Download the \texttt{JupyterLab} file \href{https://github.com/leonardblaschek/plantcv/blob/06e4e001111b82e5dbaff17217257d8c75d22bbc/tray_vis_allow_gaps.ipynb}{tray\_vis\_allow\_gaps.ipynb}, save it somewhere convenient (I would advise creating a dedicated \texttt{PlantCV} folder), and open it in JupyterLab. As you see, the code is split up in individual cells that can be run one at a time. 
+
+\paragraph*{Cell 1} The first cell loads all necessary packages and defines that the intermediate output is directly printed into the JupterLab notebook.
+
+\paragraph*{Cell 2} In the second chunk, you need to change the path in the \texttt{pcv.readimage} function so that it leads to a representative picture of your plants. I would choose a full tray at an intermediate growth stage. \textit{There are some parts that are commented out which relate to colour correction. Ignore those for now.}
+
+\paragraph*{Cells 3--5} The next three chunks identify the colour card, write it's size to file as a scale reference, and crop out the colour card so it doesn't interfere with the downstream analysis. \textit{Again, ignore the commented-out lines about colour correction.}
+
+\paragraph*{Cell 6} Next, we identify the bright markers in the corners of the tray and crop the picture accordingly.
+
+\paragraph*{Cell 7} This cell simply outputs the L, A and B channels of the LAB colourspace, and the H and S channels of the HSV colourspace (the V channel is roughly identical to the L channel of the LAB colourspace). The output purely serves to give you a better idea of which of these channels are suitable for segmentation. What makes a channel suitable for segmentation is the difference between the plant and the background. In most scenarios, the A and B channels will work best (figure \ref{fig:S_A}), but depending on your specific case, the others might be useful as well.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.95\linewidth]{S_A}
+	\caption[S and A channels.]{The saturation (S) and red--green (A) channels from the HSV and LAB colourspaces respectively. The S channel is clearly not very useful in this example, while the clear difference between plant and background in the A channel makes the latter a prime candidate for image segmentation.}
+	\label{fig:S_A}
+\end{figure}
+
+\paragraph*{Cell 8} This is the most important cell of the pipeline. Here, you use the channels identified in the previous cell to reliably segment the image so that only the plant remains, and the background is removed. In the file you downloaded, I use channels A, B, and H. For each of these, I create a threshold defining which pixels are classified as plant, and which as background. We then join these thresholds, only keeping the pixels that were classified as plant in all three channels.
+
+After the thresholds have been applied, we filter and clean the image a little to remove any small incorrectly classified outliers. the \texttt{if--else} statement here relies on the consistent naming of your files, because it changes parameters depending on plant age. In early stages, we remove only very tiny outliers, because the plant itself is very small. In later growth stages, we can remove larger outliers without risking losing the plant.
+
+\paragraph*{Cells 9--13} Here we cluster the pixels classified as plant into individual plants, and export one image for each plant. This is just so you have the segmented images for presentation purposes. If you took good pictures and chose the right thresholds in cell 8, the output of cell 12 should look like figure \ref{fig:clusters}.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.6\linewidth]{clusters}
+	\caption[Successfully clustered plants.]{Successful clustering of plant-pixels into individual plants. Note some minor miss-classifications like the string shaped contour in the red plant, which will be filtered out in the coming steps.}
+	\label{fig:clusters}
+\end{figure}
+
+\paragraph*{Cell 14} This is the actual image analysis part. The function takes our segmented image, defines the regions-of-interest (ROIs) where it expects plants, and analyses each plant. It outputs parameters of rosette shape (area, compactness), colour (HSV), and morphology (leaf count) to \texttt{.json} files. The analysis also allows for holes, \textit{i.e.} trays with less than 15 pots or pots with no plants, without messing up your plant numbering.
+
+\paragraph*{Final touches} Now the pipeline is optimised for the image you chose in the beginning. To make sure that it will work for your whole dataset, go through the JupyterLab notebook with other images, especially those from very early and very late stages. Adjust the thresholds in cell 8 to get the best results across your dataset. In early stages, too stringent thresholds will lead to the loss of leaves or whole plants, while the biggest problem in later stages is plant overlap. If two plants overlap, the pipeline will classify them as one plant, messing up your results. The only remedy for that is to open the respective images in any image manipulation software (Fiji/GIMP/Paint), and separating the plants by drawing black lines across their point of overlap.
+
+\subsubsection{Inflorescence growth}
+
+The pipeline for the inflorescence growth, \textit{i.e.} the pictures taken from the side, is very similar to the one for the rosette growth. Download the \href{https://github.com/leonardblaschek/plantcv/blob/06e4e001111b82e5dbaff17217257d8c75d22bbc/plantcv_vis.ipynb}{plantcv\_vis.ipynb} file, and open it as described above. Below, I will highlight some parts that are different from the rosette pipeline or might need tweaking.
+
+\paragraph*{Cell 3} At some point in later growth stages, you probably started tilting the camera by 90° to get the whole plant on the picture. In this cell, we detect whether the image was tilted to the left by checking the position of the colour card. If the image is tilted, we rotate it to the correct orientation and define a variable called \texttt{rotated} for use in coming cells. \textit{Note: if you tilted the camera to the right, we will need to think of another way to correct for that. Let me know.}
+
+\paragraph*{Cell 6} This cell is equivalent to cell 8 in the rosette growth pipeline. The main difference is twofold. Firstly I also leverage the L channel here, because our background is uniformly black. Secondly, I define the hue threshold from two sides, a low and a high part. Combining these two thresholds with the \texttt{pcv.logical\_or()} function filters out only the blue, which is in the middle of the hue scale. Adjust the thresholds to fit your pictures.
+
+\paragraph*{Cell 8} Here we define a static ROI. There are two sets of coordinates, depending on whether we rotated the picture previously or not. Only pixel clusters that are at least partly within this ROI will be used for analysis. The main use for this step is to filter out leaves, silliques and other debris that is on the ground. This means that the most important part of the ROI is its lower edge. The other thing to consider is that if you choose the ROI too small, imperfect segmentation can lead to parts of the plant being discarded when their connection to the rest of the plant is interrupted.
+
+\paragraph*{Cell 11} This is the image analysis part. It outputs essentially the same data as you've seen for the rosette growth pipeline. If everything worked as it should, the output of this chunk should look like figure \ref{fig:inflorescence}.
+
+\begin{figure}[!h]
+	\centering
+	\includegraphics[width=0.95\linewidth]{inflorescence}
+	\caption[Successfully analysed inflorescence.]{Successful segmentation of an inflorescence stem. In the right image, the convex hull of the plant is delineated in purple and the plant outline in blue.}
+	\label{fig:inflorescence}
+\end{figure}
+
+\paragraph*{Final touches} As with the pipeline for the rosette growth, it is important to test your adjustments with multiple images. Especially test images of older plants, because senescence changes the overall colour of the plants quite dramatically.
 
 \subsection{Batch analysis of multiple files}
 

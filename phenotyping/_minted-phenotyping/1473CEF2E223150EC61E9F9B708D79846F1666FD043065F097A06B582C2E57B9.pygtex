@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+conda activate plantcv \PYG{c+c1}{\PYGZsh{} make sure you are in the correct conda environment}
+jupyter\PYGZhy{}lab \PYG{c+c1}{\PYGZsh{} start JupyterLab}
+\end{Verbatim}
