@@ -210,7 +210,7 @@ To see how well my (or any other) image analysis pipeline works for your specifi
 
 \subsubsection{Rosette growth}
 
-Lets start with the images from the top. Download the \texttt{JupyterLab} file \href{https://github.com/leonardblaschek/plantcv/blob/06e4e001111b82e5dbaff17217257d8c75d22bbc/tray_vis_allow_gaps.ipynb}{tray\_vis\_allow\_gaps.ipynb}, save it somewhere convenient (I would advise creating a dedicated \texttt{PlantCV} folder), and open it in JupyterLab. As you see, the code is split up in individual cells that can be run one at a time. 
+Lets start with the images from the top. Download the \texttt{JupyterLab} file \href{https://github.com/leonardblaschek/plantcv/blob/master/tray_vis_allow_gaps.ipynb}{tray\_vis\_allow\_gaps.ipynb}, save it somewhere convenient (I would advise creating a dedicated \texttt{PlantCV} folder), and open it in JupyterLab. As you see, the code is split up in individual cells that can be run one at a time. 
 
 \paragraph*{Cell 1} The first cell loads all necessary packages and defines that the intermediate output is directly printed into the JupterLab notebook.
 
@@ -248,7 +248,7 @@ After the thresholds have been applied, we filter and clean the image a little t
 
 \subsubsection{Inflorescence growth}
 
-The pipeline for the inflorescence growth, \textit{i.e.} the pictures taken from the side, is very similar to the one for the rosette growth. Download the \href{https://github.com/leonardblaschek/plantcv/blob/06e4e001111b82e5dbaff17217257d8c75d22bbc/plantcv_vis.ipynb}{plantcv\_vis.ipynb} file, and open it as described above. Below, I will highlight some parts that are different from the rosette pipeline or might need tweaking.
+The pipeline for the inflorescence growth, \textit{i.e.} the pictures taken from the side, is very similar to the one for the rosette growth. Download the \href{https://github.com/leonardblaschek/plantcv/blob/master/plantcv_vis.ipynb}{plantcv\_vis.ipynb} file, and open it as described above. Below, I will highlight some parts that are different from the rosette pipeline or might need tweaking.
 
 \paragraph*{Cell 3} At some point in later growth stages, you probably started tilting the camera by 90° to get the whole plant on the picture. In this cell, we detect whether the image was tilted to the left by checking the position of the colour card. If the image is tilted, we rotate it to the correct orientation and define a variable called \texttt{rotated} for use in coming cells. \textit{Note: if you tilted the camera to the right, we will need to think of another way to correct for that. Let me know.}
 
