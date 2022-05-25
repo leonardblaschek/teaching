@@ -1,2 +1,2 @@
 	conda activate plantcv # make sure you are in the correct conda environment
-	jupyter-lab # start JupyterLab
+	bash parallel_trays.sh # execute batch file

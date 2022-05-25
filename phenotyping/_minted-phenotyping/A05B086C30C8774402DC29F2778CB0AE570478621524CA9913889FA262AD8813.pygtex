@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+conda activate plantcv \PYG{c+c1}{\PYGZsh{} make sure you are in the correct conda environment}
+bash parallel\PYGZus{}trays.sh \PYG{c+c1}{\PYGZsh{} execute batch file}
+\end{Verbatim}
